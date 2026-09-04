@@ -1,4 +1,4 @@
-# Business Case — [VisitFile]
+# Business Case — VisitFile
 
 ## 1. Problem / Opportunity
 After a clinic visit, patients may forget their discharge instructions and call the nurse line to ask what the doctor said, which test to schedule, and which instruction sheet they were handed. Those sheets are easy to lose, and a full portal often buries a short visit in a long record. Repeat calls waste nurse time and leave patients unsure.
@@ -45,8 +45,8 @@ VisitFile is a small patient-facing library of after-visit files. A user browses
 | Patient confidence after the visit | No | Clearer service after the appointment |
 | Clinic can see which files patients mark useful | No |Feedback for better instructions over time |
 
-**Payback period:** [about 12–14 months]
-**ROI:** [(18,000 − 10,900) / 10,900 ≈ 65%]
+**Payback period:** about 12–14 months
+**ROI:** (18,000 − 10,900) / 10,900 ≈ 65%
 
 *(See Toolkit Part C — Financial Analysis Tools document for payback, ROI, and present value formulas.)*
 
