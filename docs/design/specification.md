@@ -21,7 +21,7 @@ Non-negotiable principles this product must never violate, regardless of feature
 ## 1. Problem & Intent
  
 **Who is this for?**
-This would be used for a clinic patient (or family who is helping them) who just left an appointmnt and needs to reread their discharge notes/next steps. This will also be used by medical assistants who want to make fewer "what did they tell me?" calls
+This would be used for a clinic patient (or family who is helping them) who just left an appointment and needs to reread their discharge notes/next steps. This will also be used by medical assistants who want to make fewer "what did they tell me?" calls
  
 **What problem do they have today?**
 Paper after-visit/discharge sheets often get left in cars or are mistaken for trash. Full patient portals tend to bury one short visit under labs, bills, messages, imaging, and a login wall. People call the nurse line to hear the same instructions again because they don't want to hunt for them.
@@ -42,13 +42,13 @@ A first time user can open the most recent visit file in under 30 seconds and sa
 - filter the list: All, Active care, Bookmarked
 - Open one visit as a single page with fixed sections
 - Bookmark a visit, pin it to Active care, and mark it Useful
-- Reme,ber those three flags on this device only
+- Remember those three flags on this device only
 - Show a short "If this happens, call" strip near the top of every file
 - Label the list as sample/demonstration data
 - Work on a phone browser
  
 **Out of scope** — what it explicitly will NOT do (this list prevents scope creep and over-building).
-- Login to user accounts
+- Use logins or use user accounts
 - List real clinic records or have EHR connections
 - Have secure messaging
 - Appointment booking
@@ -64,25 +64,28 @@ A first time user can open the most recent visit file in under 30 seconds and sa
  
 Write each as a short story: who, what they're trying to do, what "done" looks like.
  
-**Scenario 1: [name]**
+**Scenario 1: [Reread last visit]**
 - Actor: Adult Patient
 - Trigger: They are home and cannot remember their home care instructions for their cough
 - Steps: Open VisitFile, see the list (newest first), tap the top card, read the call now excerpt, read home steps, follow-up
 - Success outcome: They can find the 7-day follow up instructions/warning signs without having to call the office
 - Failure outcome: They cannot tell which card is the correct one, or the file is too long to look through/scan
 
+**Scenario 2: [Keep an unfinished visit handy]**
  Actor: Parent helping a child
 - Trigger: The visit had a follow-up action (call if not better or refill check) that the parent can't remember and wants to make it easy to open if she forgets again
 - Steps: Open VisitFile, find the most current visit file, tap Pin, go back, use Active care, see only pinned visits
 - Success outcome: The visit is in the Active care section and the remaining action is visible
 - Failure outcome: Pin is an icon they don't understand, or pinned visits disappear into the All section
 
+**Scenario 3: [Find an older visit]**
  Actor: Adult Patient
 - Trigger: They need their ankle-sprain file from last month, not their latest cough visit
-- Steps: Open VisitFIle, Type "ankle" or "sprain" in search visits bar, tap to open the corresponding card
+- Steps: Open VisitFile, Type "ankle" or "sprain" in search visits bar, tap to open the corresponding card
 - Success outcome: Only relevant cards remain and the file opens
 - Failure outcome: Search matches nothing useful and gives no way to clear
 
+**Scenario 4: [Decide if a symptom is urgent]**
  Actor: Patient who feels worse overnight
 - Trigger: New or worse symptoms after visit
 - Steps: Open VisitFile, open the correct file, read the red call-now excerpt first, use the full warning list if needed
@@ -107,7 +110,7 @@ Patterns:
 | R1 | The system shall show a collection of visit files on the first screen, newest being first. | Ubiquitous |
 | R2 | The system shall label the collection as a sample/demonstration data and not personal medical records. | Ubiquitous |
 | R3 | When the user taps a visit card, the system shall open that visit's detail file. | Event |
-| R4 | When the user types in Search visits, the system shall filter cards by visit title, reason, and clinician name as they type. | Event |
+| R4 | When the user types in Search visits, the system shall filter cards by visit title, reason, or clinician name as they type. | Event |
 | R5 | When the user taps All, Active care, or Bookmarked, the system shall show only visits that match that filter. | Event |
 | R6 | While one or more visits are pinned, the system shall show a banner on the list stating how many visits are in Active care. | State |
 | R7 | When the user taps Pin on a detail file, the system shall add that visit to Active care and show a short “Saved to Active care” confirmation. | Event |
