@@ -6,7 +6,7 @@
 
 | ID | Task | Traces to (R# / ADR#) | Depends on | Status |
 |----|------|--------------------------|------------|--------|
-| T1 | List the template’s current item fields and map each VisitFile field (title, date, clinician, reason, findings, home steps, medicines, follow-up, warnings, last updated) | R11, ADR-00, ADR-01 | — | Not started |
+| T1 | List the template’s current item fields and map each VisitFile field (title, date, clinician, reason, findings, home steps, medicines, follow-up, warnings, last updated) | R11, ADR-00, ADR-01 | — | In progress |
 | T2 | Replace placeholder item data with 8 fictional visit files using those fields (expand to 18–25 after the screens work) | R1, R2, ADR-01 | T1 | Not started |
 | T3 | Add the home-list demo label: sample / demonstration data, not a personal medical record | R2 | T2 | Not Started |
 | T4 | Sort the collection newest-first and show title, date, clinician, one-line reason, and pin/bookmark hints on each card | R1, ADR-00 | T2 | Not Started |
@@ -29,6 +29,25 @@
 | T21 | Walk the specification acceptance table for R1–R17 and fix any failing test | R1-R17 | T19, T20 | Not Started |
 
 **Status values:** Not started · In progress · Done · Blocked
+
+### T1 — Item Field Map
+
+The template CSV currently provides `id`, `name`, `description`, `category`, `image_url`, and `location`. The app loader uses these same fields, converting `image_url` to `imageUrl`.
+
+| VisitFile field | Template source | Mapping |
+|-----------------|-----------------|---------|
+| title | `name` | Rename `name` to `title`. |
+| date | — | No current field; add a fictional visit date. |
+| clinician | — | No current field; add a fictional clinician label. |
+| reason | `description` | Rename `description` to `reason`; write it as a one-line reason for the visit. |
+| findings | — | No current field; add visit-specific findings. |
+| home steps | — | No current field; add the instructions for home care. |
+| medicines | — | No current field; add medicines mentioned in the visit, or state none were mentioned. |
+| follow-up | — | No current field; add the follow-up plan. |
+| warnings | — | No current field; add the full warning signs for the visit. |
+| last updated | — | No current field; add a fictional date the file was last updated. |
+
+Keep `id` as the stable item/route key; it is not a VisitFile content field. `category`, `image_url`, and `location` have no VisitFile field mapping and are not needed for the VisitFile data model. This defines the target shape for T2; it does not add or replace visit data.
 
 ## Definition of Done (applies to every task)
 - Matches its linked requirement's acceptance criteria in the specification.
