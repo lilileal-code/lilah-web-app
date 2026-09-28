@@ -61,7 +61,7 @@ export default {
       </div>
 
       <div v-else-if="!selectedItem" class="alert alert-warning" role="alert">
-        Item not found.
+        This file could not be opened. <button type="button" class="missing-file-back" @click="goBack">Go back to the list.</button>
       </div>
 
       <article v-else class="visit-detail">
