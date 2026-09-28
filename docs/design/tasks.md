@@ -6,8 +6,8 @@
 
 | ID | Task | Traces to (R# / ADR#) | Depends on | Status |
 |----|------|--------------------------|------------|--------|
-| T1 | List the template’s current item fields and map each VisitFile field (title, date, clinician, reason, findings, home steps, medicines, follow-up, warnings, last updated) | R11, ADR-00, ADR-01 | — | In progress |
-| T2 | Replace placeholder item data with 8 fictional visit files using those fields (expand to 18–25 after the screens work) | R1, R2, ADR-01 | T1 | Not started |
+| T1 | List the template’s current item fields and map each VisitFile field (title, date, clinician, reason, findings, home steps, medicines, follow-up, warnings, last updated) | R11, ADR-00, ADR-01 | — | Done |
+| T2 | Replace placeholder item data with 8 fictional visit files using those fields (expand to 18–25 after the screens work) | R1, R2, ADR-01 | T1 | Done |
 | T3 | Add the home-list demo label: sample / demonstration data, not a personal medical record | R2 | T2 | Not Started |
 | T4 | Sort the collection newest-first and show title, date, clinician, one-line reason, and pin/bookmark hints on each card | R1, ADR-00 | T2 | Not Started |
 | T5 | Wire card tap so it opens the matching visit file | R3 | T4 | Not Started |
