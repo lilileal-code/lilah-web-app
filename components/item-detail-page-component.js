@@ -8,13 +8,20 @@ export default {
       return itemsStore.items.find((item) => item.id === route.params.id);
     });
 
+    const callNowExcerpt = Vue.computed(() => {
+      const warnings = selectedItem.value?.warnings || '';
+      const excerpt = warnings.split(/[,;]/, 1)[0].trim();
+      return excerpt.endsWith('.') ? excerpt : `${excerpt}.`;
+    });
+
     return {
       itemsStore,
       selectedItem,
+      callNowExcerpt,
     };
   },
   template: /* html */ `
-    <section class="container py-4">
+    <section class="visit-detail-page py-4">
       <router-link to="/items" class="btn btn-link ps-0 mb-3">← Back to collection</router-link>
 
       <div v-if="itemsStore.isLoading" class="alert alert-secondary" role="status">
@@ -29,28 +36,45 @@ export default {
         Item not found.
       </div>
 
-      <article v-else class="card shadow-sm border-0 overflow-hidden">
-        <img
-          v-if="selectedItem.imageUrl"
-          :src="selectedItem.imageUrl"
-          :alt="selectedItem.name"
-          class="item-detail-image w-100 object-fit-cover" />
-        <div
-          v-else
-          class="item-detail-image w-100 d-flex align-items-center justify-content-center bg-light text-muted">
-          No image available
-        </div>
+      <article v-else class="visit-detail">
+        <header class="visit-detail-header">
+          <h1 class="visit-detail-title">{{ selectedItem.title }}</h1>
+          <p class="visit-detail-date">{{ selectedItem.date }}</p>
+        </header>
 
-        <div class="card-body p-4">
-          <div class="d-flex align-items-center gap-2 mb-2">
-            <h1 class="h3 mb-0">{{ selectedItem.name }}</h1>
-            <span class="badge text-bg-primary">{{ selectedItem.category || 'General' }}</span>
-          </div>
+        <p class="visit-detail-clinician"><strong>Clinician:</strong> {{ selectedItem.clinician }}</p>
 
-          <p class="lead mb-3">{{ selectedItem.description || 'No description available.' }}</p>
-          <p class="mb-0"><strong>Location:</strong> {{ selectedItem.location || 'N/A' }}</p>
-          <p class="text-muted mt-2 mb-0"><strong>Item ID:</strong> {{ selectedItem.id }}</p>
-        </div>
+        <aside class="call-now-strip" aria-labelledby="call-now-title">
+          <h2 id="call-now-title">If this happens, call</h2>
+          <p>{{ callNowExcerpt }}</p>
+          <p class="call-now-emergency">If you think this is an emergency, call 911.</p>
+        </aside>
+
+        <section class="visit-detail-section">
+          <h2>Why you came</h2>
+          <p>{{ selectedItem.reason }}</p>
+        </section>
+        <section class="visit-detail-section">
+          <h2>What we found</h2>
+          <p>{{ selectedItem.findings }}</p>
+        </section>
+        <section class="visit-detail-section">
+          <h2>What to do at home</h2>
+          <p>{{ selectedItem.homeSteps }}</p>
+        </section>
+        <section class="visit-detail-section">
+          <h2>Medicines</h2>
+          <p>{{ selectedItem.medicines }}</p>
+        </section>
+        <section class="visit-detail-section">
+          <h2>Follow-up</h2>
+          <p>{{ selectedItem.followUp }}</p>
+        </section>
+        <section class="visit-detail-section visit-detail-warnings">
+          <h2>Full warning signs</h2>
+          <p>{{ selectedItem.warnings }}</p>
+        </section>
+        <p class="visit-detail-updated"><strong>Last updated:</strong> {{ selectedItem.lastUpdated }}</p>
       </article>
     </section>
   `,
