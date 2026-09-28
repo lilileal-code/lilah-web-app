@@ -28,12 +28,57 @@ const router = VueRouter.createRouter({
   routes,
 });
 
+const visitFlagsStorageKey = 'visitfile-visit-flags';
+
+function readVisitFlags() {
+  try {
+    const savedFlags = JSON.parse(localStorage.getItem(visitFlagsStorageKey) || '{}');
+    return {
+      pinned: savedFlags.pinned || {},
+      bookmarked: savedFlags.bookmarked || {},
+      useful: savedFlags.useful || {},
+    };
+  } catch {
+    return { pinned: {}, bookmarked: {}, useful: {} };
+  }
+}
+
+function saveVisitFlags(flags) {
+  try {
+    localStorage.setItem(visitFlagsStorageKey, JSON.stringify(flags));
+  } catch {
+    // The app still works for this session when browser storage is unavailable.
+  }
+}
+
 const app = Vue.createApp({
   setup() {
+    const savedFlags = Vue.reactive(readVisitFlags());
     const itemsStore = Vue.reactive({
       items: [],
       isLoading: true,
       error: '',
+      isPinned(id) {
+        return Boolean(savedFlags.pinned[id]);
+      },
+      isBookmarked(id) {
+        return Boolean(savedFlags.bookmarked[id]);
+      },
+      isUseful(id) {
+        return Boolean(savedFlags.useful[id]);
+      },
+      togglePinned(id) {
+        savedFlags.pinned[id] = !savedFlags.pinned[id];
+        saveVisitFlags(savedFlags);
+      },
+      toggleBookmarked(id) {
+        savedFlags.bookmarked[id] = !savedFlags.bookmarked[id];
+        saveVisitFlags(savedFlags);
+      },
+      markUseful(id) {
+        savedFlags.useful[id] = true;
+        saveVisitFlags(savedFlags);
+      },
     });
 
     fetch('items-template.csv')

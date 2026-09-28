@@ -2,13 +2,24 @@ export default {
   name: 'collection-page-component',
   setup() {
     const itemsStore = Vue.inject('itemsStore');
+    const activeFilter = Vue.ref('all');
     const sortedItems = Vue.computed(() => [...itemsStore.items].sort((first, second) => {
       return Date.parse(second.date) - Date.parse(first.date);
+    }));
+    const filteredItems = Vue.computed(() => sortedItems.value.filter((item) => {
+      if (activeFilter.value === 'active') {
+        return itemsStore.isPinned(item.id);
+      }
+      if (activeFilter.value === 'bookmarked') {
+        return itemsStore.isBookmarked(item.id);
+      }
+      return true;
     }));
 
     return {
       itemsStore,
-      sortedItems,
+      activeFilter,
+      filteredItems,
     };
   },
   template: /* html */ `
@@ -23,6 +34,27 @@ export default {
           Sample data: These fictional visits are for demonstration only. They are not a personal medical record.
         </p>
 
+        <nav class="visit-filters mb-3" aria-label="Visit filters">
+          <button
+            type="button"
+            class="visit-filter"
+            :class="{ 'visit-filter-selected': activeFilter === 'all' }"
+            :aria-pressed="activeFilter === 'all'"
+            @click="activeFilter = 'all'">All</button>
+          <button
+            type="button"
+            class="visit-filter"
+            :class="{ 'visit-filter-selected': activeFilter === 'active' }"
+            :aria-pressed="activeFilter === 'active'"
+            @click="activeFilter = 'active'">Active care</button>
+          <button
+            type="button"
+            class="visit-filter"
+            :class="{ 'visit-filter-selected': activeFilter === 'bookmarked' }"
+            :aria-pressed="activeFilter === 'bookmarked'"
+            @click="activeFilter = 'bookmarked'">Bookmarked</button>
+        </nav>
+
         <div v-if="itemsStore.isLoading" class="alert alert-secondary" role="status">
           Loading visits...
         </div>
@@ -35,9 +67,9 @@ export default {
           No visits found.
         </div>
 
-        <div v-else class="visit-card-list">
+          <div v-else-if="filteredItems.length > 0" class="visit-card-list">
           <router-link
-            v-for="item in sortedItems"
+            v-for="item in filteredItems"
             :key="item.id"
             :to="'/items/' + item.id"
             class="visit-card-link">
@@ -48,13 +80,15 @@ export default {
               </div>
               <p class="visit-card-clinician">{{ item.clinician }}</p>
               <p class="visit-card-reason">{{ item.reason }}</p>
-              <div v-if="item.pinned || item.bookmarked" class="visit-card-hints">
-                <span v-if="item.pinned">Pinned</span>
-                <span v-if="item.bookmarked">Bookmarked</span>
+              <div v-if="itemsStore.isPinned(item.id) || itemsStore.isBookmarked(item.id)" class="visit-card-hints">
+                <span v-if="itemsStore.isPinned(item.id)">Pinned</span>
+                <span v-if="itemsStore.isBookmarked(item.id)">Bookmarked</span>
               </div>
             </article>
           </router-link>
         </div>
+
+        <p v-else class="visit-empty-state">No matching visits.</p>
       </div>
     </section>
   `,

@@ -22,6 +22,35 @@
   gap: 12px;
 }
 
+.visit-filters {
+  display: flex;
+  gap: 8px;
+}
+
+.visit-filter,
+.visit-action {
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid #0f766e;
+  border-radius: 4px;
+  background-color: #99e6dc;
+  color: #111827;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 13px;
+}
+
+.visit-filter-selected,
+.visit-action-selected {
+  background-color: #0f766e;
+  color: #ffffff;
+}
+
+.visit-empty-state {
+  margin: 0;
+  color: #4b5563;
+  font-size: 14px;
+}
+
 .visit-card-link {
   display: block;
   color: inherit;
@@ -168,4 +197,31 @@
 
 .visit-detail-updated {
   margin-top: 16px;
+}
+
+.visit-action-confirmation {
+  margin: 16px 0 8px;
+  color: #0f766e;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.visit-action-bar {
+  position: sticky;
+  bottom: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+  margin: 16px -16px -16px;
+  padding: 8px;
+  border-top: 1px solid #d1d5db;
+  background-color: #ffffff;
+}
+
+@media (max-width: 375px) {
+  .visit-filter,
+  .visit-action {
+    padding-right: 7px;
+    padding-left: 7px;
+  }
 }
