@@ -29,8 +29,8 @@ VisitFile should feel calm, clear, and clinical without looking like a hospital 
 | Bar Labels | Helvetica | 13px | regular |
 
 ## 4. Logo Usage
-- File(s): [link/location]
-- Do NOT: (stretch, recolor, place on busy backgrounds, etc.)
+There is no separate mark. The word VisitFile in teal at the top of every screen is the logo.
+- Keep it left-aligned with the content column
 
 ## 5. Spacing & Grid
 - Design to a single phone column, about 360–390px wide, centered on large screens
