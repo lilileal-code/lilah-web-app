@@ -10,7 +10,7 @@
 | T2 | Replace placeholder item data with 8 fictional visit files using those fields (expand to 18–25 after the screens work) | R1, R2, ADR-01 | T1 | Done |
 | T3 | Add the home-list demo label: sample / demonstration data, not a personal medical record | R2 | T2 | Done |
 | T4 | Sort the collection newest-first and show title, date, clinician, one-line reason, and pin/bookmark hints on each card | R1, ADR-00 | T2 | Done |
-| T5 | Wire card tap so it opens the matching visit file | R3 | T4 | Not Started |
+| T5 | Wire card tap so it opens the matching visit file | R3 | T4 | Done |
 | T6 | Build the detail page in spec order: title/date, clinician, call-now strip, why you came, findings, home steps, medicines, follow-up, full warnings, last updated | R11, ADR-04 | T6 | Done |
 | T7 | Add the red call-now strip near the top of every file and the line “If you think this is an emergency, call 911.” | R11, R13, ADR-04 | T6 | Done |
 | T8 | Add a labeled bottom bar on the detail page: Back, Bookmark, Pin, Useful | R12, ADR-05 | T6 | Done |
