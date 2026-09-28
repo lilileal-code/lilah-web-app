@@ -32,7 +32,7 @@ export default {
     <section class="collection-screen py-4">
       <div class="container collection-page">
         <div class="d-flex justify-content-between align-items-center mb-3">
-          <h1 class="h4 mb-0">Visits</h1>
+          <h1 class="h4 mb-0">VisitFile</h1>
           <span class="small text-muted">{{ itemsStore.items.length }} visits</span>
         </div>
 
@@ -45,7 +45,7 @@ export default {
           type="button"
           class="active-care-banner mb-3"
           @click="activeFilter = 'active'">
-          You have {{ pinnedCount }} visits in Active care
+          You have {{ pinnedCount }} visits in Active care.
         </button>
 
         <nav class="visit-filters mb-3" aria-label="Visit filters">
@@ -112,8 +112,8 @@ export default {
               <p class="visit-card-clinician">{{ item.clinician }}</p>
               <p class="visit-card-reason">{{ item.reason }}</p>
               <div v-if="itemsStore.isPinned(item.id) || itemsStore.isBookmarked(item.id)" class="visit-card-hints">
-                <span v-if="itemsStore.isPinned(item.id)">Pinned</span>
-                <span v-if="itemsStore.isBookmarked(item.id)">Bookmarked</span>
+                <span v-if="itemsStore.isPinned(item.id)">PINNED</span>
+                <span v-if="itemsStore.isBookmarked(item.id)" class="visit-card-bookmark-hint">Bookmarked</span>
               </div>
             </article>
           </router-link>

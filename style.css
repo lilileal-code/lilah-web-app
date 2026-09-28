@@ -160,16 +160,30 @@
   font-weight: 700;
 }
 
+.visit-card-bookmark-hint {
+  font-size: 12px;
+  font-weight: 400;
+}
+
 .visit-detail-page {
-  max-width: 430px;
-  padding-right: 16px;
-  padding-left: 16px;
+  width: 100%;
+  min-height: 100vh;
+  padding: 16px;
+  background-color: #e7f7f4;
   color: #111827;
   font-family: Helvetica, Arial, sans-serif;
   overflow-x: hidden;
 }
 
+.visit-detail-page > .alert {
+  max-width: 398px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .visit-detail {
+  max-width: 398px;
+  margin: 0 auto;
   padding: 16px;
   border: 1px solid #d1d5db;
   border-radius: 4px;
