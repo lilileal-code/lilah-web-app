@@ -25,8 +25,8 @@
 | T17 | Show “Pin a visit you still need to act on.” when Active care is empty | R15 | T13 | Not Started |
 | T18 | Show “This file could not be opened. Go back to the list.” for a missing visit | R16 | T5 | Not Started |
 | T19 | Check list and detail at 375px width: no sideways scroll, bottom actions still tappable | R17 | T8, T13 | Not Started |
-| T20 | Grow the sample set to 18–25 fictional primary-care and urgent-care files with no real names | R1, ADR-01 | T2, T19 | Not Started |
-| T21 | Walk the specification acceptance table for R1–R17 and fix any failing test | R1-R17 | T19, T20 | Not Started |
+| T20 | Grow the sample set to 18–25 fictional primary-care and urgent-care files with no real names | R1, ADR-01 | T2, T19 | Done |
+| T21 | Walk the specification acceptance table for R1–R17 and fix any failing test | R1-R17 | T19, T20 | Done |
 
 **Status values:** Not started · In progress · Done · Blocked
 

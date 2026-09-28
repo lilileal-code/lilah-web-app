@@ -7,7 +7,7 @@ import ItemDetailPageComponent from './components/item-detail-page-component.js'
 const routes = [
   {
     path: '/',
-    component: LandingPageComponent,
+    component: CollectionPageComponent,
   },
   {
     path: '/about',

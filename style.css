@@ -9,6 +9,7 @@
   background-color: #e7f7f4;
   color: #111827;
   font-family: Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
 }
 
 .collection-page {
@@ -165,6 +166,7 @@
   padding-left: 16px;
   color: #111827;
   font-family: Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
 }
 
 .visit-detail {
@@ -258,6 +260,20 @@
   background-color: #ffffff;
 }
 
+.navbar {
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.navbar-brand {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.navbar > div {
+  flex-wrap: wrap;
+}
+
 @media (max-width: 375px) {
   .visit-filters {
     gap: 6px;
@@ -273,6 +289,12 @@
 
   .visit-action-bar {
     gap: 4px;
+  }
+
+  .visit-action {
+    padding-right: 2px;
+    padding-left: 2px;
+    font-size: 11px;
   }
 
   .visit-card-heading {
